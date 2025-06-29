@@ -5,7 +5,7 @@ DOCKER = docker compose
 DEFAULT_DOCKER = $(DOCKER) -f ./docker/$(MODE).docker-compose.yaml --env-file ./.env
 GIT_VERSION = $(shell git tag --contains HEAD)
 
-PHP = $(shell if [ "$(MODE)" != "db" ]; then echo "$(DEFAULT_DOCKER) exec -d app php"; else echo "php"; fi)
+PHP = $(shell if [ "$(MODE)" != "partial" ]; then echo "$(DEFAULT_DOCKER) exec -d app php"; else echo "php"; fi)
 
 @docker/start:
 	@$(DEFAULT_DOCKER) up --build -d
