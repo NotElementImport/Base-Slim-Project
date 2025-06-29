@@ -1,4 +1,6 @@
-MODE = db
+include .env
+
+MODE = $(DOCKER_FILE)
 DOCKER = docker compose
 DEFAULT_DOCKER = $(DOCKER) -f ./docker/$(MODE).docker-compose.yaml --env-file ./.env
 GIT_VERSION = $(shell git tag --contains HEAD)
